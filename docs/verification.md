@@ -54,3 +54,7 @@ The full user acceptance gate is **not met**, so this work is submitted as a **d
 The `.sjg` identity/intent claim is supported for the measured JSON/browser/Node examples. It is not generalized to every host or every unknown module's behavior. Required next work is one private receiver and one real GPT file handler acceptance path, using the existing service/account boundaries; no new product database is required by this design.
 
 No production deployment, operating DB mutation, external work publication, package release or force push was performed.
+
+## Repository disposition
+
+Implementation is committed and pushed to `codex/sontool-v3-foundation`; [PR #1](https://github.com/paradigmdragon/sontool/pull/1) is open as a draft. It is deliberately unmerged because the actual private-service acceptance gate remains open. The initial workflow-scope push rejection was resolved by retaining only the inactive CI recipe; no credential permission was changed. Source code is the independently reviewed/tested implementation; subsequent edits record publication of this code branch and its limits.
