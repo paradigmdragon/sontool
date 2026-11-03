@@ -1,4 +1,5 @@
 import { validateWork, type Work, type Block } from "../core/index.js";
+import { isBackgroundColor } from "../presentation.js";
 import {
   checkModules,
   moduleKey,
@@ -136,6 +137,8 @@ export function mountWork(
       section.dataset.sceneId = scene.id;
       section.tabIndex = -1;
       section.className = "sjg-scene";
+      const background = (scene.layout as Record<string, unknown> | undefined)?.background;
+      if (isBackgroundColor(background)) section.style.backgroundColor = background;
       sceneElements.set(scene.id, section);
       pageNode.append(section);
       if (groups.has(scene.id)) section.hidden = !active.has(scene.id);

@@ -70,7 +70,7 @@ export function defaultRegistry(): ModuleRegistry {
     validate: (p, w) =>
       typeof p.alt === "string" &&
       typeof p.assetId === "string" &&
-      Boolean(w.assets && Object.hasOwn(w.assets, p.assetId)),
+      Boolean(w.assets && Object.prototype.hasOwnProperty.call(w.assets, p.assetId)),
   });
   r.register({
     id: "sontool/choice",
