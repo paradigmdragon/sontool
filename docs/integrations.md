@@ -1,6 +1,6 @@
 # Integration boundaries
 
-Status: requirements and discovery notes; **no service adapter is implemented**.
+Status: original bootstrap requirements below, supplemented by [current research](research.md). A local persistence/HTTP test adapter and a Sonjapgo capability report now exist. **No live Sonjapgo receiver, GPT file handler or publication connection is implemented.**
 
 ## Current evidence
 

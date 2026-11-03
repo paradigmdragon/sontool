@@ -1,0 +1,179 @@
+:root {
+  font-family: Inter, system-ui, sans-serif;
+  color: #22312b;
+  background: #f1f3ef;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+header {
+  padding: 22px 32px;
+  background: #fff;
+  border-bottom: 1px solid #d8dfd7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand {
+  font-size: 23px;
+}
+.brand b {
+  font-weight: 400;
+  color: #647d62;
+}
+.status {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #6e7b70;
+}
+.shell {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 32px;
+  padding: 32px;
+  max-width: 1500px;
+  margin: auto;
+}
+aside {
+  position: sticky;
+  top: 20px;
+  align-self: start;
+}
+h2 {
+  font-size: 29px;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+aside p {
+  color: #627367;
+  line-height: 1.5;
+}
+label {
+  display: block;
+  margin: 18px 0 8px;
+  font-size: 13px;
+}
+select,
+textarea,
+button,
+input {
+  font: inherit;
+}
+select,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #c9d3c7;
+  border-radius: 8px;
+  background: white;
+}
+button,
+.file {
+  padding: 11px 14px;
+  margin: 5px 5px 5px 0;
+  border: 1px solid #b7c9b6;
+  border-radius: 8px;
+  background: #e1eadd;
+  cursor: pointer;
+}
+#apply {
+  background: #315b40;
+  color: white;
+}
+input[type="file"] {
+  max-width: 100%;
+  display: block;
+  margin-top: 8px;
+}
+#status {
+  display: block;
+  min-height: 45px;
+  margin: 14px 0;
+  font-size: 13px;
+}
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 11px;
+}
+.note {
+  font-size: 12px;
+}
+main {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 8px 36px #2337220a;
+  overflow: clip;
+}
+main h1 {
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 500;
+  letter-spacing: -2px;
+  padding: 48px;
+  margin: 0;
+  background: #e5ebdf;
+}
+.sjg-scene {
+  padding: 40px;
+  outline-offset: -4px;
+}
+.sjg-scene[hidden] {
+  display: none;
+}
+.sjg-track > p {
+  font-size: 24px;
+  line-height: 1.6;
+}
+.sjg-track img {
+  max-width: 100%;
+}
+.sjg-scroll {
+  position: relative;
+  background: #263d34;
+  color: #fff;
+  overflow: clip;
+}
+.sjg-horizontal {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  gap: 8vw;
+  will-change: transform;
+}
+.sjg-horizontal > [data-block-id] {
+  flex: 0 0 90%;
+  font-size: clamp(30px, 6vw, 76px);
+}
+.sjg-reduced {
+  height: auto !important;
+}
+[data-fallback="true"] {
+  border: 1px dashed #af7d3c;
+  padding: 16px;
+}
+@media (max-width: 760px) {
+  .shell {
+    display: block;
+    padding: 16px;
+  }
+  aside {
+    position: static;
+  }
+  main {
+    margin-top: 24px;
+  }
+  .status {
+    display: none;
+  }
+  main h1,
+  .sjg-scene {
+    padding: 24px;
+  }
+}
