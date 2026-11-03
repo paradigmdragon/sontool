@@ -15,7 +15,7 @@ macOS local environment: Node **25.7.0** and **22.23.4**, npm 11.10.1.
 - Tests exercise ID uniqueness, original fixture compatibility, intent/unknown-data roundtrip, partial human/AI edits, stale revision rejection, atomic invalid batches, undo, resource limits, duplicate JSON keys, unsafe objects/numbers and embedded assets.
 - Registry/DOM tests exercise built-ins, added custom module without core changes, unsupported/invalid fallback, target validation, independent choice groups, reduced-motion reading order and isolated session state.
 - Actual loopback HTTP requests exercise synthetic owner/non-owner/anonymous identities, persistent local save/reread and stale update rejection. Identity is injected by the test host. These are **not real Sonjapgo or ChatGPT account tests**.
-- A GitHub Actions matrix was added for the two tested Node versions; its hosted result is reported in the PR, not inferred from local success.
+- A GitHub Actions matrix is provided as `docs/ci-check.example.yml`. The connected GitHub credential lacks workflow-write scope, so the active workflow could not be pushed. No hosted CI result is claimed; local checks passed on both versions. Activating that sample requires an appropriately authorized repository maintainer.
 
 ## Browser measurement
 
