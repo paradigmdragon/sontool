@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SonTool v3 · Foundation Lab</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <span class="brand">SonTool <b>v3.0</b></span
+      ><span class="status">FOUNDATION LAB · LOCAL ONLY</span>
+    </header>
+    <div class="shell">
+      <aside>
+        <h2>One work.<br />Different experiences.</h2>
+        <p>The same portable .sjg carries identity, intent and structure.</p>
+        <label
+          >Example<select id="example">
+            <option value="landing">Landing page</option>
+            <option value="scroll">Scroll story</option>
+            <option value="choice">Interactive choice</option>
+          </select></label
+        ><label>Block<select id="block"></select></label
+        ><label>Edit text<textarea id="text" rows="4"></textarea></label
+        ><button id="apply">Apply targeted edit</button
+        ><button id="undo">Undo last edit</button
+        ><button id="export">Export .sjg</button
+        ><label class="file"
+          >Import .sjg<input
+            id="import"
+            type="file"
+            accept=".sjg,application/json" /></label
+        ><output id="status" aria-live="polite"></output>
+        <details>
+          <summary>Identity & compatibility</summary>
+          <pre id="info"></pre>
+        </details>
+        <p class="note">
+          No cloud save, AI session, or Sonjapgo publication is connected. Your
+          file stays in this browser unless you export it.
+        </p>
+      </aside>
+      <main id="player"></main>
+    </div>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

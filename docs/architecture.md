@@ -2,6 +2,8 @@
 
 Status: confirmed product direction plus experimental implementation choices. Updated 2026-11-03.
 
+The bootstrap sections below describe the starting point. The current branch adds the bounded core, registry, browser player and local test adapters described in [decision 0002](decisions/0002-foundation-runtime.md). External integrations remain unverified; see [verification](verification.md).
+
 ## Intent
 
 People and AI should be able to develop the same creative work across tools without tying its identity to an AI provider or editor. SonTool is a new public AI-native creative engine, separate from SonETool. Public development code and private creative data have different lifecycles and storage boundaries.

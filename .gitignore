@@ -27,3 +27,7 @@ uploads/
 *.sjg
 !examples/*.sjg
 .superpowers/
+
+# Local foundation experiments
+.private/
+!examples/runtime/*.sjg

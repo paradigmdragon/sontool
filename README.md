@@ -1,63 +1,59 @@
 # SonTool v3.0
 
-**An open, AI-native creative engine for people and AI to build portable works.**
+**A shared creative foundation for people and AI to build portable works.**
 
-[한국어](README.ko.md) · [Architecture](docs/architecture.md) · [Next engineering brief](docs/foundation-engineering.md)
+[한국어](README.ko.md) · [Architecture](docs/architecture.md) · [Research](docs/research.md) · [Verification and open gates](docs/verification.md)
 
-SonTool is a new public project, separate from the existing **SonETool**. Its direction is a shared creative core for interactive stories, pages and multimedia experiences. A portable `.sjg` work should move between **SonTool GPT**, a ChatGPT-specific creation environment, and **SonTool App**, an environment for multiple AI providers and the Sonjapgo app.
+SonTool is a separate public project from the existing SonETool. Its direction is a common creative core used by SonTool GPT, SonTool App and independent media adapters. A work's identity and source data should survive moving between those environments. Different renderers do not promise identical experiences.
 
-## Current status: repository bootstrap
+## Current status: experimental foundation, external acceptance open
 
-This repository is a small, working document experiment and an engineering handoff. **It is not a released SonTool v3.0 engine or editor.**
+This branch extends the original `0.1.0-draft.1` JSON envelope. It is not a stable format release or a deployed creative service.
 
-| Available now | Planned and not implemented |
+| Implemented and locally tested | Not established |
 | --- | --- |
-| Experimental JSON `.sjg` envelope and validator | Stable portable format and migration policy |
-| Parse/serialize with document-wide unique IDs | Targeted edits, revisions, conflict rejection and undo |
-| Three synthetic fixtures and a read-only validation CLI | Web playback and modular editor/runtime |
-| Behavioral tests and locked dependencies | GPT/App interfaces, Skill/Template lookup and service adapters |
-| Architecture and engineering acceptance criteria | Private preview, approved publication, Remotion/FilmCraft integration |
+| Bounded `.sjg` import/export, stable IDs, unknown-data preservation | Large-media packaging or stable migration policy |
+| Atomic partial edits, exact revision checks, snapshot undo | Persistent edit history or concurrent automatic merging |
+| Module registry, text/image/choice modules, inactive fallback | Untrusted plugin sandbox or a full visual editor |
+| Landing, horizontal scroll and choice playback in a browser | Native app, Remotion or FilmCraft acceptance |
+| Local private store and HTTP identity/CAS tests | Real Sonjapgo OAuth/private `.sjg` receiver |
+| Browser edit/export/import lab | Installed ChatGPT file handler or hosted Sites workspace |
 
-The fixtures show candidate data shapes for landing, scroll and choice works. They do not demonstrate playback, navigation, layout fidelity or compatibility with any existing service.
+The original validator, CLI and three bootstrap fixtures remain available. Runtime examples are separate. [Execution-profile restrictions](docs/sjg-format.md#bounded-foundation-execution-profile) can reject a file that passes the original structural validator; rejection never silently repairs the file. The existing timing/behavior hints are preserved, not automatically reinterpreted as supported playback.
 
 ## Run locally
 
-Use Node.js **22.12.0 or newer** and npm. No AI account, API key, server or database is required.
+Use Node.js 22.12.0 or newer and npm. No AI account, API key or external service is needed.
 
 ```sh
 git clone https://github.com/paradigmdragon/sontool.git
 cd sontool
 npm ci --ignore-scripts
 npm run check
+npm run demo
 ```
 
-Validate your own local draft:
+Open `http://127.0.0.1:4173`. The lab edits in memory and exports `.sjg` files. It has no cloud persistence or publication action. Refreshing without exporting loses those local edits.
 
-```sh
-npm run validate -- /path/to/work.sjg
-```
-
-The command reads files locally, performs no uploads and returns a nonzero exit status on failure. `npm run check` runs the tests and validates all three public fixtures. There is no application build step yet.
+`npm run check` runs type checking, original and runtime behavioral tests, a library/browser build and validation of all six fixtures. `npm run validate -- /path/to/work.sjg` retains the original **structural** CLI; it is not a playback or authorization check.
 
 ## Structure
 
 ```text
-src/document.mjs               Experimental parse, validate and serialize functions
-schemas/sjg-draft.schema.json  Draft structural envelope
-scripts/validate.mjs           Local validation CLI
-examples/                     Synthetic, public .sjg fixtures
-test/                         Behavioral and CLI checks
-docs/                         Architecture, contracts, decisions and next-phase brief
+src/document.mjs       Preserved bootstrap validator and codec
+schemas/               Original experimental structural schema
+src/core/              Portable bounded codec, validation, IDs, edits and undo
+src/modules.ts         Trusted installed module contracts and permitted edits
+src/web/renderer.ts    Framework-independent DOM player
+src/adapters/          Local test storage/HTTP; Sonjapgo capability report
+examples/              Original fixtures; runtime/ adds playable examples
+demo/                  Small local editing and playback lab
+test/, tests/          Bootstrap compatibility and runtime behavior tests
+docs/                  Decisions, research, module guide and acceptance evidence
 ```
 
-The candidate model is **work → page → scene → block**, with separate content, layout, timing, behavior and state data. Core data must remain independent of AI providers, renderers and publication services. Unknown module payloads are preserved as inert data; support is never inferred from successful envelope validation.
+See [module development](docs/modules.md), [runtime decision](docs/decisions/0002-foundation-runtime.md), [integration boundaries](docs/integrations.md) and [remaining engineering criteria](docs/foundation-engineering.md). Unknown modules retain their data without running downloaded code. Service credentials and access policy belong to hosts, never to imported works.
 
-## Start the foundation engineering phase
+## License and contribution
 
-Read [AGENTS.md](AGENTS.md), [architecture](docs/architecture.md), [draft format](docs/sjg-format.md), [integration boundaries](docs/integrations.md) and the [foundation engineering brief](docs/foundation-engineering.md). The brief gives the next Codex Astra Ultra session concrete research, implementation and acceptance requirements. It does not depend on a model brand or claim that selecting a model completes any work.
-
-Public code and private creative data are separate. Only synthetic works belong in this repository. See [contribution rules](CONTRIBUTING.md); `.gitignore` is a convenience, not a privacy guarantee.
-
-## License
-
-[Apache-2.0](LICENSE). The license selected when the repository was created is preserved unchanged. Third-party dependencies retain their own licenses; Ajv and the dependencies recorded in `package-lock.json` are installed through npm, not copied into this repository.
+[Apache-2.0](LICENSE), unchanged from repository creation. Dependencies are installed from npm with their own licenses. No private SonETool implementation was copied. Read [AGENTS.md](AGENTS.md) and [contribution rules](CONTRIBUTING.md). Only synthetic works belong in this repository.

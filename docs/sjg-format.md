@@ -49,3 +49,13 @@ Module-payload validation, dangling-reference checks, media packaging, import li
 ## Implementation references
 
 The schema uses [JSON Schema 2020-12 through Ajv](https://ajv.js.org/json-schema.html). Tests use the [Node.js test runner](https://nodejs.org/api/test.html). Ajv is pinned in `package.json`; install exact transitive versions with `npm ci`.
+
+## Bounded foundation execution profile
+
+`src/core/index.ts` adds `validateWork`, `importSjg`, `exportSjg`, `getElement`, `applyPatch` and `restoreRevision`. It uses the same experimental envelope, module objects and `content` fields. Original bootstrap API and fixtures remain intact. See [decision 0002](decisions/0002-foundation-runtime.md).
+
+Restrictions beyond the structural draft: 8 MiB encoded bytes, depth 64, 100,000 JSON values, 10,000 hierarchy elements; unique JSON keys; no unsafe integer values, negative zero, prototype-bearing objects, accessors, sparse arrays or `__proto__`/`constructor`/`prototype` keys. Optional intent must be an object, mode nonempty text, fallback text. Violations reject the whole input; data is never repaired or trimmed. Unknown module payloads remain opaque, including vendor-specific asset IDs. Unknown format versions reject with the original file retained by the caller.
+
+Optional `assets` is this runtime's embedded asset manifest: keys are portable IDs and values contain MIME type and padded base64 `data`. It adds no filesystem paths, credentials, fetching or archive extraction. The known image module validates asset references; other modules own their payload semantics. File restoration means JSON value equality, not whitespace/byte equality.
+
+The web profile retains source content and intent but only implements documented flow/scroll/choice behavior. General CSS layout, timelines, media synchronization, source-node/template resolution and native/film rendering remain future work.
