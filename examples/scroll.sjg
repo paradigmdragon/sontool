@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "0.1.0-draft.1",
+  "id": "scroll-work",
+  "revision": 0,
+  "title": "A short journey",
+  "pages": [
+    {
+      "id": "scroll-page",
+      "scenes": [
+        {
+          "id": "scroll-scene",
+          "blocks": [
+            {
+              "id": "scroll-intro",
+              "module": {
+                "id": "sontool/text",
+                "version": "0.1.0-draft.1"
+              },
+              "content": {
+                "text": "A short journey"
+              },
+              "layout": {
+                "flow": "block"
+              },
+              "timing": {
+                "enterAt": 0.2,
+                "exitAt": 0.8
+              }
+            }
+          ],
+          "timing": {
+            "mode": "scroll",
+            "progress": {
+              "start": 0,
+              "end": 1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

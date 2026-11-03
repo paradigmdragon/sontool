@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "0.1.0-draft.1",
+  "id": "landing-work",
+  "revision": 0,
+  "title": "Welcome to SonTool",
+  "pages": [
+    {
+      "id": "landing-page",
+      "scenes": [
+        {
+          "id": "landing-scene",
+          "blocks": [
+            {
+              "id": "landing-intro",
+              "module": {
+                "id": "sontool/text",
+                "version": "0.1.0-draft.1"
+              },
+              "content": {
+                "text": "Welcome to SonTool"
+              },
+              "layout": {
+                "flow": "block"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

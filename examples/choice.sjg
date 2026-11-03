@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "0.1.0-draft.1",
+  "id": "choice-work",
+  "revision": 0,
+  "title": "Choose a path",
+  "pages": [
+    {
+      "id": "choice-page",
+      "scenes": [
+        {
+          "id": "choice-scene",
+          "blocks": [
+            {
+              "id": "choice-intro",
+              "module": {
+                "id": "sontool/text",
+                "version": "0.1.0-draft.1"
+              },
+              "content": {
+                "text": "Choose a path"
+              },
+              "layout": {
+                "flow": "block"
+              },
+              "behavior": {
+                "choices": [
+                  {
+                    "label": "Continue",
+                    "targetSceneId": "choice-ending"
+                  }
+                ]
+              }
+            }
+          ],
+          "state": {
+            "selected": null
+          }
+        },
+        {
+          "id": "choice-ending",
+          "blocks": [
+            {
+              "id": "choice-end-text",
+              "module": {
+                "id": "sontool/text",
+                "version": "0.1.0-draft.1"
+              },
+              "content": {
+                "text": "The next chapter is yours."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

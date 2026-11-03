@@ -1,0 +1,29 @@
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+coverage/
+.cache/
+.npm/
+*.log
+*.tsbuildinfo
+.DS_Store
+
+# Credentials, local settings, private works and service data
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+private/
+local-data/
+uploads/
+*.sqlite
+*.sqlite3
+*.db
+*.sjg
+!examples/*.sjg
+.superpowers/
