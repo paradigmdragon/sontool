@@ -28,7 +28,7 @@ export function exportSjg(work: Work): string {
 /** JSON.parse accepts duplicate keys. Reject them (including escaped aliases)
  * rather than silently replacing author intent. Syntax was validated above.
  */
-function rejectDuplicateKeys(text: string): void {
+export function rejectDuplicateKeys(text: string): void {
   const stack: Array<{
     object: boolean;
     expectingKey: boolean;
@@ -44,7 +44,7 @@ function rejectDuplicateKeys(text: string): void {
       });
     else if (ch === "}" || ch === "]") stack.pop();
     else if (ch === ",") {
-      const frame = stack.at(-1);
+      const frame = stack[stack.length - 1];
       if (frame?.object) frame.expectingKey = true;
     } else if (ch === '"') {
       const start = i;
@@ -53,7 +53,7 @@ function rejectDuplicateKeys(text: string): void {
         if (text[i] === "\\") i++;
         i++;
       }
-      const frame = stack.at(-1);
+      const frame = stack[stack.length - 1];
       if (frame?.object && frame.expectingKey) {
         const key: string = JSON.parse(text.slice(start, i + 1));
         if (frame.keys.has(key))

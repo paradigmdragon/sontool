@@ -57,3 +57,5 @@ See [module development](docs/modules.md), [runtime decision](docs/decisions/000
 ## License and contribution
 
 [Apache-2.0](LICENSE), unchanged from repository creation. Dependencies are installed from npm with their own licenses. No private SonETool implementation was copied. Read [AGENTS.md](AGENTS.md) and [contribution rules](CONTRIBUTING.md). Only synthetic works belong in this repository.
+
+Host integration: [Phase 2 status](docs/phase2.md) · [stateless Node bridge](docs/bridge.md).

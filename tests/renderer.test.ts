@@ -13,6 +13,26 @@ function host() {
   const dom = new JSDOM("<main></main>");
   return { dom, root: dom.window.document.querySelector("main")! };
 }
+test("scene background paints only a six-digit hex color while retaining title and source layout", () => {
+  const w = structuredClone(landing);
+  w.title = "Human title";
+  w.pages[0]!.scenes[0]!.layout = { background: "#AABBCC", vendor: { preserve: true } };
+  const before = exportSjg(w);
+  const { root } = host();
+  mountWork(root, w, defaultRegistry());
+  assert.equal(root.querySelector<HTMLElement>("[data-scene-id=welcome]")!.style.backgroundColor, "rgb(170, 187, 204)");
+  assert.equal(root.querySelector("h1")!.textContent, "Human title");
+  assert.equal(exportSjg(w), before);
+});
+test("scene background does not execute imported CSS URLs or general style properties", () => {
+  const w = structuredClone(landing);
+  w.pages[0]!.scenes[0]!.layout = { background: "url(https://example.invalid/private)", color: "red" };
+  const { root } = host();
+  mountWork(root, w, defaultRegistry());
+  const scene = root.querySelector<HTMLElement>("[data-scene-id=welcome]")!;
+  assert.equal(scene.style.background, "");
+  assert.equal(scene.style.color, "");
+});
 test("all fixtures render after file roundtrip with stable IDs and intent", () => {
   for (const w of [landing, scrollStory, choiceStory]) {
     const { root } = host();
